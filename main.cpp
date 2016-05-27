@@ -7,6 +7,10 @@
 #include "Gladiator.h"
 #include "Animal.h"
 
+// nowy plik z funkcjami/klasą funkcji
+// ogarnięcie zwierząt
+// zmiana interfejsu użytnownika
+
 using namespace std;
 
 int skillchoice ();
@@ -22,8 +26,8 @@ int main(int argc, char const *argv[])
 
 	Gladiator *player = new Gladiator;
 	Gladiator *enemy = new Gladiator;
-	enemy->random();
-	player->start();
+	enemy -> random();
+	player -> start();
 
 	fight(player,enemy);
 
@@ -49,35 +53,37 @@ void fight(Gladiator * player, Gladiator * enemy)
 		cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 		cout << "===============\nPOZIOM WALKI: " << enemy->getlevel() << endl;
 		cout << "===========================================================================================================" << endl;
-		cout << "Statystyki " << player->showname() << ":" ; player->statisticsshort(); 
-		cout << "   <|>   Statystyki " << enemy->showname() << ":" ; enemy->statisticsshort(); cout << endl; 
+		cout << "Statystyki " << player -> showname() << ":" ; player -> statisticsshort(); 
+		cout << "   <|>   Statystyki " << enemy -> showname() << ":" ; enemy -> statisticsshort(); cout << endl; 
 		while(1)
 		{ 
 			cout << endl << "===========================================================================================================" << endl;
-			player->dynamicstatistics(); cout << "  P: "<< player->getpopularity() << "   <|>   "; 
-			enemy->dynamicstatistics(); cout << endl;
+			player -> dynamicstatistics(); cout << "  P: "<< player -> getpopularity() << "   <|>   "; 
+			enemy -> dynamicstatistics(); cout << endl;
 			cout << "===========================================================================================================" << endl;
 			int pchoice = skillchoice(), echoice = random() % 3 + 1;
 			skill(pchoice, echoice, player, enemy);
-			if (player->gethp()<1)
+			if (player -> gethp()<1)
 			{
 
 				anotherchance = random() % 100 +1;
-				if (anotherchance < player->getpopularity())
+				if (anotherchance < player -> getpopularity())
 				{
 					cout << "Przegrałeś walkę.\nJednak cesarz postanawia Cię ocalić!" << endl;
-					player->droppopularity();
+					player -> droppopularity();
 				}
 				else 
 				{
-					cout << "===============\nZginąłeś..." << endl;
+					cout << "===========================================================================================================" << endl;
+					cout << "Zginąłeś..." << endl;
 					exit(0);
 				}
 				break;
 			}
-			if (enemy->gethp()<1)
+			if (enemy -> gethp()<1)
 			{
-				cout << "===============\nWygrałeś walkę!" << endl;
+				cout << "===========================================================================================================" << endl;
+				cout << "Wygrałeś walkę!" << endl;
 				break;
 			}
 		}
@@ -86,18 +92,18 @@ void fight(Gladiator * player, Gladiator * enemy)
 		getchar();
 		if (anotherchance == 0)
 		{
-			if (enemy->getlevel() == 5)
+			if (enemy -> getlevel() == 5)
 			{
 				exit(0);
 			}
-			enemy->levelup();
+			enemy -> levelup();
 			cout << "Otrzymujesz 10 punktów do rozdania." << endl;
-			player->setstatistics();
+			player -> setstatistics();
 
 		}
-		enemy->random();
-		enemy->getup();
-		player->getup();
+		enemy -> random();
+		enemy -> getup();
+		player -> getup();
 	}
 }
 
@@ -110,17 +116,17 @@ void skill(int pchoice, int echoice, Gladiator * player, Gladiator * enemy)
 		case 2:
 		{
 			cout << "Obaj gladiatorzy używają ataku!" << endl;
-			if (player->getagility()>=enemy->getagility())
+			if (player -> getagility() >= enemy -> getagility())
 			{
-				enemy->losehp(attack(player->getstrength(), player->getmorale(), enemy->getdefence(), 0));
+				enemy -> losehp(attack(player -> getstrength(), player -> getmorale(), enemy -> getdefence(), 0));
 				if (enemy->gethp()<1) break;
-				player->losehp(attack(enemy->getstrength(), enemy->getmorale(), player->getdefence(), 0));
+				player -> losehp(attack(enemy -> getstrength(), enemy -> getmorale(), player -> getdefence(), 0));
 			}
 			else
 			{
-				player->losehp(attack(enemy->getstrength(), enemy->getmorale(), player->getdefence(), 0));
+				player -> losehp(attack(enemy -> getstrength(), enemy -> getmorale(), player -> getdefence(), 0));
 				if (player->gethp()<1) break;			
-				enemy->losehp(attack(player->getstrength(), player->getmorale(), enemy->getdefence(), 0));
+				enemy -> losehp(attack(player -> getstrength(), player -> getmorale(), enemy -> getdefence(), 0));
 			}
 			break;
 		}
@@ -129,12 +135,12 @@ void skill(int pchoice, int echoice, Gladiator * player, Gladiator * enemy)
 			if (pchoice == 1)
 			{
 				cout << "Używasz ataku, a Twój przeciwnik bloku!" << endl;
-				enemy->losehp(attack(player->getstrength(), player->getmorale(), enemy->getdefence(), 1));
+				enemy -> losehp(attack(player -> getstrength(), player -> getmorale(), enemy -> getdefence(), 1));
 			}
 			else 
 			{
 				cout << "Używasz bloku, a Twój przeciwnik ataku!" << endl;
-				player->losehp(attack(enemy->getstrength(), enemy->getmorale(), player->getdefence(), 1));
+				player -> losehp(attack(enemy -> getstrength(), enemy -> getmorale(), player -> getdefence(), 1));
 			}
 			break;
 		}
@@ -150,16 +156,16 @@ void skill(int pchoice, int echoice, Gladiator * player, Gladiator * enemy)
 				if (pchoice == 1) 
 				{	
 					cout << "Używasz ataku, a Twój przeciwnik krzyku!" << endl;
-					enemy->losehp(attack(player->getstrength(), player->getmorale(), enemy->getdefence(), 0));
-					enemy->addmorale();
-					player->lessmorale();
+					enemy -> losehp(attack(player -> getstrength(), player -> getmorale(), enemy -> getdefence(), 0));
+					enemy -> addmorale();
+					player -> lessmorale();
 				}
 				else
 				{
 					cout << "Używasz krzyku, a Twój przeciwnik ataku!" << endl;
-					player->losehp(attack(enemy->getstrength(), enemy->getmorale(), player->getdefence(), 0));
-					player->addmorale();
-					enemy->lessmorale();
+					player -> losehp(attack(enemy -> getstrength(), enemy -> getmorale(), player -> getdefence(), 0));
+					player -> addmorale();
+					enemy -> lessmorale();
 				}
 			}
 			break;
@@ -169,22 +175,22 @@ void skill(int pchoice, int echoice, Gladiator * player, Gladiator * enemy)
 			if (pchoice == 3)
 			{
 				cout << "Używasz krzyku, a Twój przeciwnik bloku!" << endl;
-				player->addmorale();
-				enemy->lessmorale();
+				player -> addmorale();
+				enemy -> lessmorale();
 			}
 			else
 			{
 				cout << "Używasz bloku, a Twój przeciwnik krzyku!" << endl;
-				enemy->addmorale();
-				player->lessmorale();
+				enemy -> addmorale();
+				player -> lessmorale();
 			}
 			break;
 		}
 		case 6:
 		{
 			cout << "Obaj gladiatorzy używają krzyku!" << endl;
-			player->addmorale();
-			enemy->addmorale();
+			player -> addmorale();
+			enemy -> addmorale();
 			break;
 		}
 	}
@@ -197,22 +203,22 @@ float attack(int strength, int morale, int defence, bool skill)
 	{
 		if (skill)
 		{
-			attack = (1.2*strength)/defence;
+			attack = strength/defence;
 		}
 		else
 		{
-			attack = (2*strength)/defence;
+			attack = (2.2*strength)/defence;
 		}
 	}	
 	else
 	{
 		if (skill)
 		{
-			attack = (1.2*strength);
+			attack = strength;
 		}
 		else
 		{
-			attack = (2*strength);
+			attack = 2.2*strength;
 		}
 	}
 	attack = attack * morale/7;

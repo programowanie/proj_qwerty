@@ -36,7 +36,7 @@ public:
 	void statisticsshort();
 	void dynamicstatistics();
 
-	void addpopularity() { popularity += 3; };
+	void addpopularity();
 	void droppopularity();
 	void levelup() { level++; };
 };

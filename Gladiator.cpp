@@ -139,3 +139,13 @@ void Gladiator::clear()
 	Warrior::clear();
 	charisma = 0;
 }
+
+void Gladiator::addpopularity()
+{
+	if (charisma > 1)
+		popularity += 2 * charisma;
+	else 
+	{
+		popularity += 3;
+	}
+}
