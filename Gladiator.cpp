@@ -21,10 +21,15 @@ void Gladiator::setstatistics()
 {
 	int stat,
 		points = 10;
+
+	cout << "---------------------------------------------------------------------------------------" << endl;
+	cout << "Atak: " << getstrength() << " Obrona: " << getdefence()
+	 << " Zrecznosc: " << getagility() << " Charyzma:" << getcharisma() << endl;
+	cout << "---------------------------------------------------------------------------------------" << endl;		
+
 	while (points--)
 	{
-		cout << "Pozostało do rozdania: " << points + 1 << endl;
-		cout << "Co chcesz dodać?:\n1.Atak\n2.Obrona\n3.Zręczność\n4.Charyzma\n";
+		cout << "Co chcesz dodać?: (pozostało: " << points + 1 << ") \n1.Atak\n2.Obrona\n3.Zręczność\n4.Charyzma"<< endl;
 		cin >> stat;
 		switch (stat)
 		{
@@ -43,11 +48,13 @@ void Gladiator::setstatistics()
 		cout << "---------------------------------------------------------------------------------------" << endl;
 		cout << "Atak: " << getstrength() << " Obrona: " << getdefence()
 		 << " Zrecznosc: " << getagility() << " Charyzma:" << getcharisma() << endl;
+		cout << "---------------------------------------------------------------------------------------" << endl;
 	} 
 }
 
 int Gladiator::random()
 {
+	clear();
 	vector <string> names;
 	ifstream file("names.dat");
 	copy(istream_iterator<string>(file),
@@ -95,7 +102,7 @@ void Gladiator::dynamicstatistics()
 
 void Gladiator::droppopularity()
 {
-	popularity -= rand() % 50 + 1;
+	popularity -= rand() % 30 + 20;
 	if (popularity < 0)
 	{
 		popularity = 0;
@@ -104,7 +111,7 @@ void Gladiator::droppopularity()
 
 void Gladiator::lessmorale()
 {
-	if (morale > 1) morale--;
+	if (morale > 0) morale--;
 }
 
 void Gladiator::addmorale()
@@ -119,4 +126,16 @@ void Gladiator::start()
 	setname();
 	cout << "Rozdaj statystyki" << endl;
 	setstatistics();
+}
+
+void Gladiator::getup()
+{
+	morale = 5;
+	Warrior::getup();
+}
+
+void Gladiator::clear()
+{
+	Warrior::clear();
+	charisma = 0;
 }

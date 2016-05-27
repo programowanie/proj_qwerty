@@ -13,9 +13,11 @@ public:
 	int gethp() { return hp; };
 
 	void losehp(int n) { hp -=n; };
-	void sethp() { hp = 100; };
+	void getup() { hp = 42; };
 
 	void addstrength(int n) { strength += n; };
 	void adddefence(int n) { defence += n; };
 	void addagility(int n) { agility += n; };
+
+	void clear();
 };

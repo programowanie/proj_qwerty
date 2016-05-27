@@ -43,27 +43,61 @@ int skillchoice()
 
 void fight(Gladiator * player, Gladiator * enemy)
 {
-	cout << "---------------------------------------------------------------------------------------------------------------" << endl;
-	cout << "Statystyki " << player->showname() << ":" ; player->statisticsshort(); 
-	cout << "   <|>   Statystyki " << enemy->showname() << ":" ; enemy->statisticsshort(); cout << endl; 
-	cout << "---------------------------------------------------------------------------------------------------------------" << endl;
-	while(1)
+	while(42)
 	{
-		cout << "___________________________________________________________________________________________________________" << endl;
-		player->dynamicstatistics(); cout << "  P: "<< player->getpopularity() << "   <|>   "; 
-		enemy->dynamicstatistics(); cout << endl;
-		int pchoice = skillchoice(), echoice = random() % 3 + 1;
-		skill(pchoice, echoice, player, enemy);
-		if (player->gethp()<1) 
-		{
-			cout << endl << "PRZEGRALES" << endl;
-			exit(0);
+		int anotherchance = 0;
+		cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+		cout << "===============\nPOZIOM WALKI: " << enemy->getlevel() << endl;
+		cout << "===========================================================================================================" << endl;
+		cout << "Statystyki " << player->showname() << ":" ; player->statisticsshort(); 
+		cout << "   <|>   Statystyki " << enemy->showname() << ":" ; enemy->statisticsshort(); cout << endl; 
+		while(1)
+		{ 
+			cout << endl << "===========================================================================================================" << endl;
+			player->dynamicstatistics(); cout << "  P: "<< player->getpopularity() << "   <|>   "; 
+			enemy->dynamicstatistics(); cout << endl;
+			cout << "===========================================================================================================" << endl;
+			int pchoice = skillchoice(), echoice = random() % 3 + 1;
+			skill(pchoice, echoice, player, enemy);
+			if (player->gethp()<1)
+			{
+
+				anotherchance = random() % 100 +1;
+				if (anotherchance < player->getpopularity())
+				{
+					cout << "Przegrałeś walkę.\nJednak cesarz postanawia Cię ocalić!" << endl;
+					player->droppopularity();
+				}
+				else 
+				{
+					cout << "===============\nZginąłeś..." << endl;
+					exit(0);
+				}
+				break;
+			}
+			if (enemy->gethp()<1)
+			{
+				cout << "===============\nWygrałeś walkę!" << endl;
+				break;
+			}
 		}
-		if (enemy->gethp()<1)
+		cout << "[enter by kontynuować]" << endl;
+		getchar();
+		getchar();
+		if (anotherchance == 0)
 		{
-			cout << endl << "WYGRALES" << endl;
-			exit(0);
+			if (enemy->getlevel() == 5)
+			{
+				exit(0);
+			}
+			enemy->levelup();
+			cout << "Otrzymujesz 10 punktów do rozdania." << endl;
+			player->setstatistics();
+
 		}
+		enemy->random();
+		enemy->getup();
+		player->getup();
 	}
 }
 
@@ -158,14 +192,30 @@ void skill(int pchoice, int echoice, Gladiator * player, Gladiator * enemy)
 
 float attack(int strength, int morale, int defence, bool skill)
 {
-	float attack;
-	if (skill)
+	float attack = 1;
+	if (defence)
 	{
-		attack = (1.2*strength)/defence;
-	}
+		if (skill)
+		{
+			attack = (1.2*strength)/defence;
+		}
+		else
+		{
+			attack = (2*strength)/defence;
+		}
+	}	
 	else
 	{
-		attack = (2*strength)/defence;
+		if (skill)
+		{
+			attack = (1.2*strength);
+		}
+		else
+		{
+			attack = (2*strength);
+		}
 	}
-	return (attack*morale/7);
+	attack = attack * morale/7;
+	if (attack < 1) attack = 1; 
+	return attack;
 }

@@ -8,12 +8,13 @@ Animal::Animal()
 :Warrior()
 {
 	anger = 0;
+	addagility(42);
 }
 
 int Animal::randomselection(int level)
 {
 	int repeat,
-		points = 12*level;
+		points = 10*level;
 
 	repeat = rand() % points + 1;
 	addstrength(repeat);
@@ -23,12 +24,6 @@ int Animal::randomselection(int level)
 
 	repeat = rand() % points + 1;
 	adddefence(repeat);
-
-	points -= repeat;
-	if (points==0) return 0;
-
-	repeat = rand() % points + 1;
-	addagility(repeat);
 
 	points -= repeat;
 	if (points==0) return 0;

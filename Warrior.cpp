@@ -11,3 +11,9 @@ Warrior::Warrior()
 	hp = 42;
 }
 
+void Warrior::clear()
+{
+	strength = 0;
+	defence = 0;
+	agility = 0;
+}
