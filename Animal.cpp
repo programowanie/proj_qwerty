@@ -31,7 +31,7 @@ int Animal::random(int level)
 void Animal::statisticsshort()
 {
 	cout << green << showname() << ":";
-	cout << red << " Atak:" << def << setw(2)  << getstrength() 
+	cout << red << " Atak:" << def << setw(2)  << getstrength()
 		 << blue << "  Unik:" << def << setw(2)  << getdefence()
 		 << yellow << "  Szybkość:" << def << setw(2) << getagility();
 }

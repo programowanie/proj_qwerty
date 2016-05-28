@@ -10,9 +10,9 @@ class Gladiator
 {
 private:
 	string name;
-	int charisma, 
-		morale, 
-		popularity, 
+	int charisma,
+		morale,
+		popularity,
 		level;
 
 public:
@@ -23,7 +23,7 @@ public:
 
 	int getcharisma()	{ return charisma; };
 	int getmorale()		{ return morale; };
-	int getpopularity() { return popularity; };
+	int getpopularity()	{ return popularity; };
 	int getlevel() 		{ return level; };
 
 	void addcharisma(int n) { charisma += n; };

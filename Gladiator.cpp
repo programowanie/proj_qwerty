@@ -25,9 +25,9 @@ void Gladiator::setstatistics()
 		points = 10;
 
 	cout << "==========================================================================================================================" << endl;
-	cout << red << " Atak:" << def << setw(2)  << getstrength() 
+	cout << red << " Atak:" << def << setw(2)  << getstrength()
 		 << blue << "  Obrona:" << def << setw(2)  << getdefence()
-		 << yellow << "  Zręczność:" << def << setw(2) << getagility() 
+		 << yellow << "  Zręczność:" << def << setw(2) << getagility()
 		 << magenta << "  Charyzma:" << def << setw(2)  << getcharisma() << endl;
 	cout << "==========================================================================================================================" << endl;
 
