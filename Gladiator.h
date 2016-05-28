@@ -10,16 +10,19 @@ class Gladiator
 {
 private:
 	string name;
-	int charisma, morale, popularity, level;
+	int charisma, 
+		morale, 
+		popularity, 
+		level;
 
 public:
 	Gladiator();
 	void start();
 
-	int getcharisma() { return charisma; };
-	int getmorale() { return morale; };
+	int getcharisma()	{ return charisma; };
+	int getmorale()		{ return morale; };
 	int getpopularity() { return popularity; };
-	int getlevel() { return level; };
+	int getlevel() 		{ return level; };
 
 	void addcharisma(int n) { charisma += n; };
 	void addmorale();
@@ -27,16 +30,16 @@ public:
 
 	void getup();
 
-	void setname() { cin >> name; };
-	string showname() { return name; }
+	void   setname() 	{ cin >> name; };
+	string showname() 	{ return name; }
 
+	int  random();
 	void clear();
-	int random();
 	void setstatistics();
 	void statisticsshort();
 	void dynamicstatistics();
 
 	void addpopularity();
 	void droppopularity();
-	void levelup() { level++; };
+	void levelup() 	{ level++; };
 };

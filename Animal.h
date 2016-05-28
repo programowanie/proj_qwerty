@@ -10,7 +10,7 @@ private:
 public:
 	Animal();
 	void addanger(int n) { anger += n; };
-	int getanger() { return anger; };
-	int randomselection(int level);
+	int  getanger() 	 { return anger; };
+	int  randomselection(int level);
 	void displaystatistics();
 };

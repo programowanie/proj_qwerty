@@ -14,7 +14,7 @@ Animal::Animal()
 int Animal::randomselection(int level)
 {
 	int repeat,
-		points = 10*level;
+		points = 7*level;
 
 	repeat = rand() % points + 1;
 	addstrength(repeat);

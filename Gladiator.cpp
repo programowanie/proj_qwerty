@@ -5,6 +5,7 @@
 #include <iterator>
 #include <fstream>
 #include <iomanip>
+#include "Colors.h"
 
 using namespace std;
 
@@ -22,15 +23,23 @@ void Gladiator::setstatistics()
 	int stat,
 		points = 10;
 
-	cout << "---------------------------------------------------------------------------------------" << endl;
-	cout << "Atak: " << getstrength() << " Obrona: " << getdefence()
-	 << " Zrecznosc: " << getagility() << " Charyzma:" << getcharisma() << endl;
-	cout << "---------------------------------------------------------------------------------------" << endl;		
+	cout << "===========================================================================================================" << endl;
+	cout << red << " Atak:" << def << setw(2)  << getstrength() 
+		 << blue << "  Obrona:" << def << setw(2)  << getdefence()
+		 << yellow << "  Zręczność:" << def << setw(2) << getagility() 
+		 << magenta << "  Charyzma:" << def << setw(2)  << getcharisma() << endl;
+	cout << "===========================================================================================================" << endl;
 
 	while (points--)
 	{
-		cout << "Co chcesz dodać?: (pozostało: " << points + 1 << ") \n1.Atak\n2.Obrona\n3.Zręczność\n4.Charyzma"<< endl;
+		cout << " Co chcesz dodać?: (pozostało:" << setw(2) << red << points + 1 << def << ") " << endl << endl;
+		cout << red << " 1.Atak" << endl 
+			 << blue << " 2.Obrona" << endl
+			 << yellow << " 3.Zręczność" << endl
+			 << magenta << " 4.Charyzma" << def << endl << endl;
+		cout << black;
 		cin >> stat;
+		cout << def;
 		switch (stat)
 		{
 			case 1: 
@@ -45,10 +54,12 @@ void Gladiator::setstatistics()
 			case 4: 
 				addcharisma(1); break;
 		}
-		cout << "---------------------------------------------------------------------------------------" << endl;
-		cout << "Atak: " << getstrength() << " Obrona: " << getdefence()
-		 << " Zrecznosc: " << getagility() << " Charyzma:" << getcharisma() << endl;
-		cout << "---------------------------------------------------------------------------------------" << endl;
+		cout << "===========================================================================================================" << endl;
+		cout << red << " Atak:" << def << setw(2)  << getstrength() 
+		 	 << blue << "  Obrona:" << def << setw(2)  << getdefence()
+		 	 << yellow << "  Zręczność:" << def << setw(2) << getagility() 
+		 	 << magenta << "  Charyzma:" << def << setw(2)  << getcharisma() << endl;
+		cout << "===========================================================================================================" << endl;
 	} 
 }
 
@@ -83,21 +94,22 @@ int Gladiator::random()
 	addagility(repeat);
 
 	points -= repeat;
-	if (points==0) return 0;
-
-	repeat = rand() % points + 1;
-	addcharisma(repeat);
+	addcharisma(points);
 }
 
 void Gladiator::statisticsshort()
 {
-	cout << " A:" << setw(2)  << getstrength() << "  O:" << setw(2)  << getdefence()
-		 << "  Z:" << setw(2) << getagility() << "  C:" << setw(2)  << getcharisma();
+	cout << green << showname() << ":";
+	cout << red << " Atak:" << def << setw(2)  << getstrength() 
+		 << blue << "  Obrona:" << def << setw(2)  << getdefence()
+		 << yellow << "  Zręczność:" << def << setw(2) << getagility() 
+		 << magenta << "  Charyzma:" << def << setw(2)  << getcharisma();
 }
 
 void Gladiator::dynamicstatistics()
 {
-	cout << showname() << "  HP: " << gethp() << "  M: " << getmorale();
+	cout << green << showname() << red << "  HP:"<< def << setw(2) << gethp()
+		 			   << yellow << "  Morale:" << def << setw(2) << getmorale();
 }
 
 void Gladiator::droppopularity()
@@ -122,9 +134,9 @@ void Gladiator::addmorale()
 
 void Gladiator::start()
 {
-	cout << "Podaj imię gracza: ";
+	cout << red << " Podaj imię: " << def;
 	setname();
-	cout << "Rozdaj statystyki" << endl;
+	cout << endl << green << " Rozdaj statystyki" << def << endl;
 	setstatistics();
 }
 
