@@ -17,3 +17,9 @@ void Warrior::clear()
 	defence = 0;
 	agility = 0;
 }
+
+int Warrior::losehp(int n)
+{
+	hp -= n;
+	return n;
+}

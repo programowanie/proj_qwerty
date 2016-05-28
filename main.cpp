@@ -3,10 +3,6 @@
 #include "Animal.h"
 #include "Functions.h"
 
-
-// ogarnięcie zwierząt
-// zmiana interfejsu użytkownika
-
 int main(int argc, char const *argv[])
 {
 	srand(argc == 2 
@@ -25,5 +21,6 @@ int main(int argc, char const *argv[])
 
 	delete player;
 	delete enemy;
+
 	return 0;
 }

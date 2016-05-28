@@ -24,12 +24,12 @@ void Gladiator::setstatistics()
 	int stat,
 		points = 10;
 
-	cout << "===========================================================================================================" << endl;
+	cout << "==========================================================================================================================" << endl;
 	cout << red << " Atak:" << def << setw(2)  << getstrength() 
 		 << blue << "  Obrona:" << def << setw(2)  << getdefence()
 		 << yellow << "  Zręczność:" << def << setw(2) << getagility() 
 		 << magenta << "  Charyzma:" << def << setw(2)  << getcharisma() << endl;
-	cout << "===========================================================================================================" << endl;
+	cout << "==========================================================================================================================" << endl;
 
 	while (points--)
 	{
@@ -55,12 +55,12 @@ void Gladiator::setstatistics()
 			case 4: 
 				addcharisma(1); break;
 		}
-		cout << "===========================================================================================================" << endl;
+		cout << "==========================================================================================================================" << endl;
 		cout << red << " Atak:" << def << setw(2)  << getstrength() 
 		 	 << blue << "  Obrona:" << def << setw(2)  << getdefence()
 		 	 << yellow << "  Zręczność:" << def << setw(2) << getagility() 
 		 	 << magenta << "  Charyzma:" << def << setw(2)  << getcharisma() << endl;
-		cout << "===========================================================================================================" << endl;
+		cout << "==========================================================================================================================" << endl;
 	} 
 }
 
@@ -115,7 +115,7 @@ void Gladiator::dynamicstatistics()
 
 void Gladiator::droppopularity()
 {
-	popularity -= rand() % 30 + 20;
+	popularity -= rand() % 40 + 30;
 	if (popularity < 0)
 	{
 		popularity = 0;
@@ -134,12 +134,13 @@ void Gladiator::lessmorale(int difference)
 void Gladiator::addmorale()
 {
 	if (morale < 12) morale = morale + 1 + charisma/3;
+	if (morale > 12) morale = 12;
 	addpopularity();
 }
 
 void Gladiator::start()
 {
-	cout << red << " Podaj imię: " << def;
+	cout << green << " Podaj imię: " << def;
 	setname();
 	cout << endl << green << " Rozdaj statystyki" << def << endl;
 	setstatistics();
@@ -164,5 +165,9 @@ void Gladiator::addpopularity()
 	else 
 	{
 		popularity += 3;
+	}
+	if (popularity > 100)
+	{
+		popularity = 100;
 	}
 }

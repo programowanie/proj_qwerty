@@ -1,17 +1,20 @@
 #include "Animal.h"
+#include "Colors.h"
 #include <iostream>
 #include <cstdlib>
+#include <iomanip>
 
 using namespace std;
 
 Animal::Animal()
 :Warrior()
 {
-	anger = 0;
+	anger = 3;
 	addagility(42);
+	name = "TYGRYS";
 }
 
-int Animal::randomselection(int level)
+int Animal::random(int level)
 {
 	int repeat,
 		points = 7*level;
@@ -22,18 +25,45 @@ int Animal::randomselection(int level)
 	points -= repeat;
 	if (points==0) return 0;
 
-	repeat = rand() % points + 1;
-	adddefence(repeat);
-
-	points -= repeat;
-	if (points==0) return 0;
-
-	repeat = rand() % points + 1;
-	addanger(repeat);
+	adddefence(points);
 }
 
-void Animal::displaystatistics()
+void Animal::statisticsshort()
 {
-	cout << "Atak: " << getstrength() << " Obrona: " << getdefence()
-	 << " Zrecznosc: " << getagility() << " Wściekłość:" << getanger() << endl;
+	cout << green << showname() << ":";
+	cout << red << " Atak:" << def << setw(2)  << getstrength() 
+		 << blue << "  Unik:" << def << setw(2)  << getdefence()
+		 << yellow << "  Szybkość:" << def << setw(2) << getagility();
 }
+
+void Animal::dynamicstatistics()
+{
+	cout << green << showname() << red << "  HP:"<< def << setw(2) << gethp()
+		 			   << yellow << "  Wściekłość:" << def << setw(2) << getanger();
+}
+
+void Animal::clear()
+{
+	Warrior::clear();
+	Warrior::getup();
+	anger = 3;
+}
+
+void Animal::addanger()
+{
+	anger += 2;
+	if (anger > 10)
+	{
+		anger = 10;
+	}
+}
+
+void Animal::addanger(int n)
+{
+	anger += n;
+	if (anger > 10)
+	{
+		anger = 10;
+	}
+}
+

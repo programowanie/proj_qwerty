@@ -17,7 +17,9 @@ private:
 
 public:
 	Gladiator();
+
 	void start();
+	void getup();
 
 	int getcharisma()	{ return charisma; };
 	int getmorale()		{ return morale; };
@@ -26,12 +28,10 @@ public:
 
 	void addcharisma(int n) { charisma += n; };
 	void addmorale();
-	void lessmorale(int difference);
-
-	void getup();
+	void lessmorale (int difference);
 
 	void   setname() 	{ cin >> name; };
-	string showname() 	{ return name; }
+	string showname() 	{ return name; };
 
 	int  random();
 	void clear();
