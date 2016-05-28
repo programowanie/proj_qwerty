@@ -121,9 +121,13 @@ void Gladiator::droppopularity()
 	}
 }
 
-void Gladiator::lessmorale()
+void Gladiator::lessmorale(int difference)
 {
-	if (morale > 0) morale--;
+	if (morale > 0 && difference > 2) morale = morale - 1 - difference/3;
+	else 
+		if (morale > 0) morale--;
+	if (morale < 0) 
+		morale = 0;
 }
 
 void Gladiator::addmorale()

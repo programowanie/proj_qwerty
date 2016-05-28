@@ -26,7 +26,7 @@ public:
 
 	void addcharisma(int n) { charisma += n; };
 	void addmorale();
-	void lessmorale();
+	void lessmorale(int difference);
 
 	void getup();
 

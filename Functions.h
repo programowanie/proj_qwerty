@@ -156,14 +156,14 @@ void skill(int pchoice, int echoice, Gladiator * player, Gladiator * enemy)
 					cout << " Używasz ataku, a Twój przeciwnik krzyku!" << endl;
 					enemy -> losehp(attack(player -> getstrength(), player -> getmorale(), enemy -> getdefence(), 0));
 					enemy -> addmorale();
-					player -> lessmorale();
+					player -> lessmorale(enemy -> getcharisma() - player -> getcharisma());
 				}
 				else
 				{
 					cout << " Używasz krzyku, a Twój przeciwnik ataku!" << endl;
 					player -> losehp(attack(enemy -> getstrength(), enemy -> getmorale(), player -> getdefence(), 0));
 					player -> addmorale();
-					enemy -> lessmorale();
+					enemy -> lessmorale(player -> getcharisma() - enemy -> getcharisma());
 				}
 			}
 			break;
@@ -174,13 +174,13 @@ void skill(int pchoice, int echoice, Gladiator * player, Gladiator * enemy)
 			{
 				cout << " Używasz krzyku, a Twój przeciwnik bloku!" << endl;
 				player -> addmorale();
-				enemy -> lessmorale();
+				enemy -> lessmorale(player -> getcharisma() - enemy -> getcharisma());
 			}
 			else
 			{
 				cout << " Używasz bloku, a Twój przeciwnik krzyku!" << endl;
 				enemy -> addmorale();
-				player -> lessmorale();
+				player -> lessmorale(enemy -> getcharisma() - player -> getcharisma());
 			}
 			break;
 		}
