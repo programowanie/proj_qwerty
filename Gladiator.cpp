@@ -1,11 +1,12 @@
 #include "Gladiator.h"
+#include "Colors.h"
 #include <iostream>
 #include <cstdlib>
 #include <vector>
 #include <iterator>
 #include <fstream>
 #include <iomanip>
-#include "Colors.h"
+
 
 using namespace std;
 

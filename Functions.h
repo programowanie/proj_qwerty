@@ -1,15 +1,15 @@
 #pragma once
+#include "Warrior.h"
+#include "Gladiator.h"
+#include "Animal.h"
+#include "Colors.h"
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <ctime>
 #include <cstdlib>
 #include <iomanip>
-#include <ncurses.h>
-#include "Warrior.h"
-#include "Gladiator.h"
-#include "Animal.h"
-#include "Colors.h"
+#include <ncurses.h> // jeszcze nie używane
 
 using namespace std;
 
@@ -34,7 +34,7 @@ void fight(Gladiator * player, Gladiator * enemy)
 	{
 		int anotherchance = 0;
 		cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-		cout << "===============\n" << green << "POZIOM WALKI: " << def << enemy -> getlevel() << def << endl;
+		cout << "===============\n" << green << " POZIOM WALKI: " << def << enemy -> getlevel() << def << endl;
 
 		cout << "==========================================================================================================================" << endl;
 		player -> statisticsshort(); 
