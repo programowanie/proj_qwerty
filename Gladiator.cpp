@@ -83,19 +83,23 @@ int Gladiator::random()
 	addstrength(repeat);
 	
 	points -= repeat;
-	if (points==0) return 0;
+	if (points==0) 
+		return 0;
 
 	repeat = rand() % points + 1;
 	adddefence(repeat);
 
 	points -= repeat;
-	if (points==0) return 0;
+	if (points==0) 
+		return 0;
 
 	repeat = rand() % points + 1;
 	addagility(repeat);
 
 	points -= repeat;
 	addcharisma(points);
+
+	return 0;
 }
 
 void Gladiator::statisticsshort()
@@ -110,16 +114,14 @@ void Gladiator::statisticsshort()
 void Gladiator::dynamicstatistics()
 {
 	cout << green << showname() << red << "  HP:"<< def << setw(2) << gethp()
-		 			   << yellow << "  Morale:" << def << setw(2) << getmorale();
+		 << yellow << "  Morale:" << def << setw(2) << getmorale();
 }
 
 void Gladiator::droppopularity()
 {
 	popularity -= rand() % 40 + 30;
 	if (popularity < 0)
-	{
 		popularity = 0;
-	}
 }
 
 void Gladiator::lessmorale(int difference)
@@ -127,14 +129,18 @@ void Gladiator::lessmorale(int difference)
 	if (morale > 0 && difference > 2) morale = morale - 1 - difference/3;
 	else 
 		if (morale > 0) morale--;
+
 	if (morale < 0) 
 		morale = 0;
 }
 
 void Gladiator::addmorale()
 {
-	if (morale < 12) morale = morale + 1 + charisma/3;
-	if (morale > 12) morale = 12;
+	if (morale < 12) 
+		morale = morale + 1 + charisma/3;
+
+	if (morale > 12) 
+		morale = 12;
 	addpopularity();
 }
 
@@ -163,11 +169,8 @@ void Gladiator::addpopularity()
 	if (charisma > 1)
 		popularity += 2 * charisma;
 	else 
-	{
 		popularity += 3;
-	}
+
 	if (popularity > 100)
-	{
 		popularity = 100;
-	}
 }

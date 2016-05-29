@@ -4,7 +4,7 @@
 #include "Animal.h"
 
 int   skillchoice();
-void  fight(Gladiator * player, Gladiator * enemy);
+void  fight(Gladiator * player, Gladiator * enemy, Animal * mytiger, Animal * enemytiger);
 void  fight(Gladiator * player, Animal * mytiger);
 void  fightbehind(Gladiator * enemy, Animal * enemytiger);
 void  skill(int pchoice, int echoice, Gladiator * player, Gladiator * enemy);

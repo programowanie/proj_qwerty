@@ -41,5 +41,5 @@ public:
 
 	void addpopularity();
 	void droppopularity();
-	void levelup() 	{ level++; };
+	void levelup() { level++; };
 };

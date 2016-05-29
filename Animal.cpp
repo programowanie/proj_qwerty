@@ -23,9 +23,12 @@ int Animal::random(int level)
 	addstrength(repeat);
 	
 	points -= repeat;
-	if (points==0) return 0;
+	if (points==0) 
+		return 0;
 
 	adddefence(points);
+
+	return 0;
 }
 
 void Animal::statisticsshort()
@@ -39,7 +42,7 @@ void Animal::statisticsshort()
 void Animal::dynamicstatistics()
 {
 	cout << green << showname() << red << "  HP:"<< def << setw(2) << gethp()
-		 			   << yellow << "  Wściekłość:" << def << setw(2) << getanger();
+		 << yellow << "  Wściekłość:" << def << setw(2) << getanger();
 }
 
 void Animal::clear()
@@ -53,17 +56,13 @@ void Animal::addanger()
 {
 	anger += 2;
 	if (anger > 10)
-	{
 		anger = 10;
-	}
 }
 
 void Animal::addanger(int n)
 {
 	anger += n;
 	if (anger > 10)
-	{
 		anger = 10;
-	}
 }
 

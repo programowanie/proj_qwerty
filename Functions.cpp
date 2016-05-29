@@ -22,11 +22,8 @@ int skillchoice()
 	return choice;
 }
 
-void fight(Gladiator * player, Gladiator * enemy)
+void fight(Gladiator * player, Gladiator * enemy, Animal * mytiger, Animal * enemytiger)
 {
-	Animal *mytiger = new Animal;
-	Animal *enemytiger = new Animal;
-
 	while(42)
 	{
 		int anotherchance = 0,
@@ -52,10 +49,13 @@ void fight(Gladiator * player, Gladiator * enemy)
 			if (animalfightchance > 92 && oneperbattle)
 			{
 				oneperbattle = 0;
+
 				cout << red << "==========================================================================================================================" << endl
 					 << " UWAGA!!! NA ARENE WPUSZCZONO ZWIERZĘTA! BROŃ SIĘ!" << def << endl;
+
 				mytiger -> random(player -> getlevel());
 				enemytiger -> random(enemy -> getlevel());
+
 				fight(player, mytiger);
 				fightbehind(enemy, enemytiger);
 			}
@@ -115,16 +115,14 @@ void fight(Gladiator * player, Gladiator * enemy)
 			}
 			enemy -> levelup();
 			player -> levelup();
+
 			cout << red << " Otrzymujesz 10 punktów do rozdania." << def << endl;
 			player -> setstatistics();
-
 		}
 		enemy -> random();
 		enemy -> getup();
 		player -> getup();
 	}
-	delete mytiger;
-	delete enemytiger;
 }
 
 
@@ -175,7 +173,8 @@ void fightbehind(Gladiator * enemy, Animal * enemytiger)
 			case 2:
 			{	
 				enemy -> losehp(attack(enemytiger -> getstrength(), enemytiger -> getanger(), enemy -> getdefence(), 0));
-				if (enemy -> gethp()<1) break;			
+				if (enemy -> gethp()<1) 
+					break;			
 				enemytiger -> losehp(attack(enemy -> getstrength(), enemy -> getmorale(), enemytiger -> getdefence(), 0));
 				break;
 			}
@@ -215,7 +214,6 @@ void fightbehind(Gladiator * enemy, Animal * enemytiger)
 					enemytiger -> addanger();
 				}
 				else
-
 					enemy -> lessmorale(2);
 				break;
 			}
@@ -231,7 +229,6 @@ void fightbehind(Gladiator * enemy, Animal * enemytiger)
 		{
 				cout << green << " Przeciwnik zginął w walce z tygrysem." << def << endl;
 				break;
-
 		}
 			
 		if (enemytiger -> gethp()<1)
@@ -257,7 +254,8 @@ void skill(int pchoice, int echoice, Gladiator * player, Gladiator * enemy)
 				cout << " " << green << enemy -> showname() << def << " traci " 
 					 << enemy -> losehp(attack(player -> getstrength(), player -> getmorale(), enemy -> getdefence(), 0)) 
 					 << " hp." << endl;
-				if (enemy -> gethp()<1) break;
+				if (enemy -> gethp()<1) 
+					break;
 				cout << " " << green << player -> showname() << def << " traci "
 					 << player -> losehp(attack(enemy -> getstrength(), enemy -> getmorale(), player -> getdefence(), 0))
 					 << " hp." << endl;
@@ -267,10 +265,11 @@ void skill(int pchoice, int echoice, Gladiator * player, Gladiator * enemy)
 				cout << " " << green << player -> showname() << def << " traci "
 					 << player -> losehp(attack(enemy -> getstrength(), enemy -> getmorale(), player -> getdefence(), 0))
 					 << " hp." << endl;
-				if (player -> gethp()<1) break;			
+				if (player -> gethp()<1) 
+					break;			
 				cout << " " << green << enemy -> showname() << def << " traci " 
 					 << enemy -> losehp(attack(player -> getstrength(), player -> getmorale(), enemy -> getdefence(), 0)) 
-					 << " hp." << endl;
+				 	 << " hp." << endl;
 			}
 			break;
 		}
@@ -357,14 +356,13 @@ void skill(int pchoice, int tchoice, Gladiator * player, Animal * mytiger)
 		case 2:
 		{
 			cout << " Zwierze naciera na gladiatora, a on odpowiada tym samym!" << endl;
-
 			cout << " " << green << player -> showname() << def << " traci "
 				 << player -> losehp(attack(mytiger -> getstrength(), mytiger -> getanger(), player -> getdefence(), 0))
 				 << " hp." << endl;
 			if (player -> gethp()<1) break;			
-			cout << " " << green << mytiger -> showname() << def << " traci " 
-				 << mytiger -> losehp(attack(player -> getstrength(), player -> getmorale(), mytiger -> getdefence(), 0)) 
-				 << " hp." << endl;
+				cout << " " << green << mytiger -> showname() << def << " traci " 
+					 << mytiger -> losehp(attack(player -> getstrength(), player -> getmorale(), mytiger -> getdefence(), 0)) 
+					 << " hp." << endl;
 			break;
 		}
 		case 3:
@@ -446,24 +444,16 @@ float attack(int strength, int morale, int defence, bool skill)
 	if (defence)
 	{
 		if (skill)
-		{
 			attack = 0.8 * strength / defence;
-		}
 		else
-		{
 			attack = 2.2 * strength / defence;
-		}
 	}	
 	else
 	{
 		if (skill)
-		{
 			attack = 0.8 * strength;
-		}
 		else
-		{
 			attack = 2.2 * strength;
-		}
 	}
 
 	attack = attack * morale/7;
