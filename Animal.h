@@ -14,11 +14,11 @@ private:
 public:
 	Animal();
 
-	int  getanger() { return anger; };
+	int getanger() { return anger; };
 	void addanger();
 	void addanger(int n);
 
-	int  random(int level);
+	int random(int level);
 	void clear();
 
 	void statisticsshort();

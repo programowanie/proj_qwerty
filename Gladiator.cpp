@@ -38,9 +38,11 @@ void Gladiator::setstatistics()
 			 << blue << " 2.Obrona" << endl
 			 << yellow << " 3.Zręczność" << endl
 			 << magenta << " 4.Charyzma" << def << endl << endl;
+
 		cout << black;
 		cin >> stat;
 		cout << def;
+
 		switch (stat)
 		{
 			case 1: 
@@ -128,7 +130,8 @@ void Gladiator::lessmorale(int difference)
 {
 	if (morale > 0 && difference > 2) morale = morale - 1 - difference/3;
 	else 
-		if (morale > 0) morale--;
+		if (morale > 0) 
+			morale--;
 
 	if (morale < 0) 
 		morale = 0;

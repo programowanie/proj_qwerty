@@ -30,6 +30,7 @@ void fight(Gladiator * player, Gladiator * enemy, Animal * mytiger, Animal * ene
 			animalfightchance = 0,
 			oneperbattle;
 		oneperbattle = 1;
+		
 		cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 		cout << "===============\n" << green << " POZIOM WALKI: " << def << enemy -> getlevel() << def << endl;
 
@@ -359,10 +360,11 @@ void skill(int pchoice, int tchoice, Gladiator * player, Animal * mytiger)
 			cout << " " << green << player -> showname() << def << " traci "
 				 << player -> losehp(attack(mytiger -> getstrength(), mytiger -> getanger(), player -> getdefence(), 0))
 				 << " hp." << endl;
-			if (player -> gethp()<1) break;			
-				cout << " " << green << mytiger -> showname() << def << " traci " 
-					 << mytiger -> losehp(attack(player -> getstrength(), player -> getmorale(), mytiger -> getdefence(), 0)) 
-					 << " hp." << endl;
+			if (player -> gethp()<1) 
+				break;			
+			cout << " " << green << mytiger -> showname() << def << " traci " 
+				 << mytiger -> losehp(attack(player -> getstrength(), player -> getmorale(), mytiger -> getdefence(), 0)) 
+				 << " hp." << endl;
 			break;
 		}
 		case 3:

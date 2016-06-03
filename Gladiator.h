@@ -21,19 +21,19 @@ public:
 	void start();
 	void getup();
 
-	int getcharisma()	{ return charisma; };
-	int getmorale()		{ return morale; };
+	int getcharisma() { return charisma; };
+	int getmorale()	{ return morale; };
 	int getpopularity()	{ return popularity; };
-	int getlevel() 		{ return level; };
+	int getlevel() { return level; };
 
 	void addcharisma(int n) { charisma += n; };
 	void addmorale();
 	void lessmorale (int difference);
 
-	void   setname() 	{ cin >> name; };
-	string showname() 	{ return name; };
+	void setname() { cin >> name; };
+	string showname() { return name; };
 
-	int  random();
+	int random();
 	void clear();
 	void setstatistics();
 	void statisticsshort();

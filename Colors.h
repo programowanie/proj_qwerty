@@ -1,3 +1,4 @@
+#pragma once
 #include <ostream>
 
 namespace Color 
@@ -13,7 +14,6 @@ namespace Color
         FG_BLACK    = 30,
         
         FG_DEFAULT  = 39,
-
     };
     class Modifier 
     {
